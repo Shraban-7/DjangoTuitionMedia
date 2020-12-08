@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}
+Filter
+{% endblock %}
+{% block content %}
+    <div class="container">
+{% if not results %}
+<h2>Nothing Found for your filter data</h2>
+{% endif %}
+    <h1>All post given below</h1>
+    {% for result in results %}
+    <div class="card">
+  <div class="card-header">
+    {{ result.fullname }}
+  </div>
+  <div class="card-body">
+
+    <p class="card-text">{{ result.detail_tuition }}</p>
+    <a href="{% url 'detail' result.pk %}" class="btn btn-primary">Detail</a>
+  </div>
+</div>
+    {% endfor %}
+    
+</div>
+
+{% endblock %}

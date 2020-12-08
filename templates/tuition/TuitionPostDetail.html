@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}
+Detail
+{% endblock %}
+{% block content %}
+<div class="container">
+<div class="card" style="width: 18rem;">
+  <div class="card-header">
+    {{ object.fullname }}
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">{{ object.district }}</li>
+    <li class="list-group-item">{{ object.area }}</li>
+    <li class="list-group-item">{{ object.class_other }}</li>
+    <li class="list-group-item">{{ object.medium }}</li>
+    <li class="list-group-item">{{ object.subjects }}</li>
+    <li class="list-group-item">{{ object.school_college }}</li>
+    <li class="list-group-item">{{ object.detail_tuition }}</li>
+    <li class="list-group-item">{{ object.day_per_week }}</li>
+    <li class="list-group-item">{{ object.salary }}</li>
+  </ul>
+</div>
+</div>
+{% endblock %}
