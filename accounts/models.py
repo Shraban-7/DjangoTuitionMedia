@@ -36,7 +36,15 @@ class CustomAccountManager(BaseUserManager):
 
 class NewUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(_('email address'), unique=True)
+    # phone_number = models.RegexField(regex=r'^([01]|\+88)?\d{11}', error_messages={
+    #     "required": "Phone number must be entered in the format: '+8801000000000'. Up to 15 digits allowed."}
     username = models.CharField(max_length=150, unique=True)
+    # first_name = models.CharField(max_length=150, blank=True)
+    # start_date = models.DateTimeField(default=timezone.now)
+    # about = models.TextField(_(
+    #     'about'), max_length=500, blank=True)
+    # phone_regex = RegexValidator(regex=r'^([01]|\+88)?\d{11}')
+    # phone_number = models.CharField(validators=[phone_regex], max_length=15, unique=True, null=True)
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=False)
 

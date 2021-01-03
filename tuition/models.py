@@ -8,12 +8,12 @@ class Country(models.Model):
         return self.name
 
 
-class City(models.Model):
-    country = models.ForeignKey(Country, on_delete=models.CASCADE)
-    name = models.CharField(max_length=30)
-
-    def __str__(self):
-        return self.name
+# class City(models.Model):
+#     country = models.ForeignKey(Country, on_delete=models.CASCADE)
+#     name = models.CharField(max_length=30)
+#
+#     def __str__(self):
+#         return self.name
 
 
 class Subject(models.Model):
@@ -47,13 +47,14 @@ class TuitionPost(models.Model):
     prefer_medium = [('English', 'English'), ('Bangla', 'Bangla'),
                      ('Arabic', 'Arabic'), ('Other', 'Other')]
     class_choice = [('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5'), ('6', '6'), ('7', '7'), ('8', '8'),
-                    ('9', '9'), ('10', '10'), ('11', '11'), ('12', '12'), ('KG school', 'KG school'),
+                    ('9', '9'), ('10', '10'), ('11', '11'), ('12', '12'), ('Admission Test', 'Admission Test'),
+                    ('KG school', 'KG school'),
                     ('Specific Skill Develop', 'Specific Skill Develop'), ('other', 'other')]
     sno = models.AutoField(primary_key=True)
     fullname = models.CharField(max_length=100)
     country = models.ForeignKey(Country, on_delete=models.CASCADE)
-    city = models.ForeignKey(City, on_delete=models.SET_NULL, null=True)
-    class_other = models.CharField(max_length=23,choices=class_choice)
+    # city = models.ForeignKey(City, on_delete=models.SET_NULL, null=True)
+    class_other = models.CharField(max_length=23, choices=class_choice)
     medium = models.CharField(max_length=7, choices=prefer_medium, default='Bangla')
     subjects = models.CharField(max_length=250)
     school_college = models.CharField(max_length=500)
