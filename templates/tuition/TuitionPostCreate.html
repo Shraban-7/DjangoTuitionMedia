@@ -3,29 +3,31 @@
 Create
 {% endblock %}
 {% block content %}
-<form method="post" id="personForm" >
+<form method="post" id="personForm" data-cities-url="{% url 'ajax_load_cities' %}" novalidate>
 {% csrf_token %}
 {{ form.as_p }}
 <button type="submit">Submit</button>
 
 </form>
 
-{#  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>#}
-{#  <script>#}
-{#    $("#id_country").change(function () {#}
-{#      var url = $("#personForm").attr("data-cities-url");#}
-{#      var countryId = $(this).val();#}
-{##}
-{#      $.ajax({#}
-{#        url: url,#}
-{#        data: {#}
-{#          'country': countryId#}
-{#        },#}
-{#        success: function (data) {#}
-{#          $("#id_city").html(data);#}
-{#        }#}
-{#      });#}
-{##}
-{#    });#}
-{#  </script>#}
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+{#<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>#}
+  <script>
+    $("#id_country").change(function () {
+      var url = $("#personForm").attr("data-cities-url");
+      var countryId = $(this).val();
+
+      $.ajax({
+        url: url,
+        data: {
+          'country': countryId
+        },
+        success: function (data) {
+          $("#id_city").html(data);
+        }
+      });
+
+    });
+  </script>
 {% endblock %}

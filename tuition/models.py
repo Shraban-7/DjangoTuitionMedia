@@ -8,12 +8,12 @@ class Country(models.Model):
         return self.name
 
 
-# class City(models.Model):
-#     country = models.ForeignKey(Country, on_delete=models.CASCADE)
-#     name = models.CharField(max_length=30)
-#
-#     def __str__(self):
-#         return self.name
+class City(models.Model):
+    country = models.ForeignKey(Country, on_delete=models.CASCADE)
+    name = models.CharField(max_length=30)
+
+    def __str__(self):
+        return self.name
 
 
 class Subject(models.Model):
@@ -53,7 +53,7 @@ class TuitionPost(models.Model):
     sno = models.AutoField(primary_key=True)
     fullname = models.CharField(max_length=100)
     country = models.ForeignKey(Country, on_delete=models.CASCADE)
-    # city = models.ForeignKey(City, on_delete=models.SET_NULL, null=True)
+    city = models.ForeignKey(City, on_delete=models.SET_NULL, null=True)
     class_other = models.CharField(max_length=23, choices=class_choice)
     medium = models.CharField(max_length=7, choices=prefer_medium, default='Bangla')
     subjects = models.CharField(max_length=250)

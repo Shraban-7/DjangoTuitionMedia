@@ -3,7 +3,7 @@ from django.views.generic import TemplateView, CreateView, UpdateView, ListView,
 
 # Create your views here.
 from tuition.forms import TuitionPostForm
-from tuition.models import TuitionPost, Country, Subject, Class, Medium
+from tuition.models import TuitionPost, Country, Subject, Class, Medium, City
 from django.db.models import Q, query
 
 
@@ -58,7 +58,8 @@ def filter(request):
         context = {'results': results}
     return render(request, 'tuition/filter.html', context)
 
-# def load_cities(request):
-#     country_id = request.GET.get('country')
-#     cities = City.objects.filter(country_id=country_id).order_by('name')
-#     return render(request, 'tuition/city_dropdown_list_options.html', {'cities': cities})
+
+def load_cities(request):
+    country_id = request.GET.get('country')
+    cities = City.objects.filter(country_id=country_id).order_by('name')
+    return render(request, 'tuition/city_dropdown_list_options.html', {'cities': cities})
